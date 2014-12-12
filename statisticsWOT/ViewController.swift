@@ -14,10 +14,9 @@ class ViewController: NSViewController {
     @IBOutlet weak var outNickName: NSTextField!
     @IBAction func getStart(sender: AnyObject) {
     
-     var nickName = inputNickName.stringValue
+     var nickNameIn = inputNickName.stringValue
     
-        println(nickName)
-        
+        println(nickNameIn)
         
         func getJSON(urlToRequest: String) -> NSData{
             return NSData(contentsOfURL: NSURL(string: urlToRequest)!)!
@@ -29,32 +28,50 @@ class ViewController: NSViewController {
             return boardsDictionary
         }
         
-        let parseAccountID = (parseJSON(getJSON("https://api.worldoftanks.ru/wot/account/list/?application_id=c2f02a1fea169312db457a323fd41441&fields=account_id&search=valicm")))
+        func parseAccountID(userName: String) -> (account_id: NSNumber?, nickname: String?, status: String?, codeError: Int?, message: String?, value:String?, Field:String? )! {
+            
+            var account_id:NSNumber?
+            var nickname:String?
+            var status:String?
+            var codeError: Int?
+            var message:String?
+            var value:String?
+            var field:String?
+            var parseError:NSDictionary!
+            
+            let parseAccountID = (parseJSON(getJSON("https://api.worldoftanks.ru/wot/account/list/?application_id=c2f02a1fea169312db457a323fd41441&fields=account_id,nickname&type=exact&search=" + userName)))
+            
+            
+            if let parse = parseAccountID as? [String: AnyObject] {
+                
+                status = parse["status"] as String! // ‘ok’ — запрос выполнен успешно; ‘error’ — ошибка при выполнении запроса.
+                
+                if status == "ok" {
+                    
+                    if let data = parse["data"] as? [AnyObject] {
+                        for start in data {
+                            account_id = start["account_id"] as? NSNumber! // Идентификатор аккаунта игрока
+                            nickname = start["nickname"] as? String //Ник игрока
+                        }
+                    }
+                }
+                else
+                {
+                    parseError = parseAccountID["error"] as NSDictionary
+                    
+                        codeError = parseError["code"] as? Int
+                        message = parseError["message"] as? String
+                        value = (parseError["value"] as String)
+                        field = (parseError["field"] as String)
+                }
+            }
+            return (account_id,nickname, status!, codeError, message, value, field)
+        }
         
-        println(parseAccountID)
+      println(parseAccountID(nickNameIn))
+
         
         
-        
-        let parseAccountID_data: NSDictionary! = parseAccountID["account_id"] as? NSDictionary
-        
-        println(parseAccountID_data)
-        
-        /*
-        let nicknameWOT = parseAccountID["data"] as AnyObject? as? NSDictionary
-       // let account_id: NSString! = parseAccountID_data["account_id"] as? NSString
-        
-        println(nicknameWOT)
-        */
-        
-        let parse = (parseJSON(getJSON("https://api.worldoftanks.ru/wot/account/info/?application_id=demo&fields=nickname,global_rating&account_id=5074337")))
-        println(parse)
-        let jsonDate: NSDictionary! = parse["data"] as? NSDictionary
-        let jsonDate2: NSDictionary! = jsonDate["5074337"] as? NSDictionary
-        let nicknameWOT: NSString! = jsonDate2["nickname"] as? NSString
-        println(nicknameWOT)
-        let global_rating: Int! = jsonDate2["global_rating"] as? Int
-        println(global_rating)
-        let jsonTime: Int! = parse["count"] as Int
     }
    
     
