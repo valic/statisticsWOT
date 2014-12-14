@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>79246D9F-9DF3-4721-80D5-2B19121D1984</string>
+	<key>IDESourceControlProjectName</key>
+	<string>statisticsWOT</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>06E67B44970E6E9B6AEA0CC0A20B9B0882C18EB9</key>
+		<string>https://github.com/valic/statisticsWOT.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>statisticsWOT.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>06E67B44970E6E9B6AEA0CC0A20B9B0882C18EB9</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/valic/statisticsWOT.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>06E67B44970E6E9B6AEA0CC0A20B9B0882C18EB9</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>06E67B44970E6E9B6AEA0CC0A20B9B0882C18EB9</string>
+			<key>IDESourceControlWCCName</key>
+			<string>statisticsWOT</string>
+		</dict>
+	</array>
+</dict>
+</plist>
