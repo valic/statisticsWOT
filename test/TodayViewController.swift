@@ -11,7 +11,12 @@ import NotificationCenter
 
 class TodayViewController: NSViewController, NCWidgetProviding {
 
+    @IBOutlet weak var outWOTStatistic: NSTextField!
     override var nibName: String? {
+        
+        outWOTStatistic.stringValue = "Hello word"
+        
+        
         return "TodayViewController"
     }
 

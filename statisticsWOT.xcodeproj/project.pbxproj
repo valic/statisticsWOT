@@ -18,6 +18,10 @@
 		BB2B769D1A350B2D00AF6CEF /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2B769C1A350B2D00AF6CEF /* TodayViewController.swift */; };
 		BB2B769F1A350B2D00AF6CEF /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB2B769E1A350B2D00AF6CEF /* TodayViewController.xib */; };
 		BB2B76A21A350B2D00AF6CEF /* test.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BB2B76911A350B2D00AF6CEF /* test.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BBF9F0B21A44BD44001B028A /* sparks.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBF9F0B11A44BD44001B028A /* sparks.jpg */; };
+		BBF9F0B41A44BE68001B028A /* pr.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF9F0B31A44BE68001B028A /* pr.png */; };
+		BBF9F0BB1A44DF2A001B028A /* speedometr-param-1.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF9F0B91A44DF2A001B028A /* speedometr-param-1.png */; };
+		BBF9F0BC1A44DF2A001B028A /* speedometr-param.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF9F0BA1A44DF2A001B028A /* speedometr-param.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +73,10 @@
 		BB2B769A1A350B2D00AF6CEF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BB2B769C1A350B2D00AF6CEF /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		BB2B769E1A350B2D00AF6CEF /* TodayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
+		BBF9F0B11A44BD44001B028A /* sparks.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sparks.jpg; sourceTree = "<group>"; };
+		BBF9F0B31A44BE68001B028A /* pr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pr.png; sourceTree = "<group>"; };
+		BBF9F0B91A44DF2A001B028A /* speedometr-param-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "speedometr-param-1.png"; sourceTree = "<group>"; };
+		BBF9F0BA1A44DF2A001B028A /* speedometr-param.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "speedometr-param.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +113,10 @@
 				BB2B76951A350B2D00AF6CEF /* test */,
 				BB2B76921A350B2D00AF6CEF /* Frameworks */,
 				BB2B76691A33A07000AF6CEF /* Products */,
+				BBF9F0B11A44BD44001B028A /* sparks.jpg */,
+				BBF9F0B31A44BE68001B028A /* pr.png */,
+				BBF9F0B91A44DF2A001B028A /* speedometr-param-1.png */,
+				BBF9F0BA1A44DF2A001B028A /* speedometr-param.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -287,8 +299,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBF9F0B21A44BD44001B028A /* sparks.jpg in Resources */,
+				BBF9F0BB1A44DF2A001B028A /* speedometr-param-1.png in Resources */,
 				BB2B76751A33A07000AF6CEF /* Images.xcassets in Resources */,
+				BBF9F0BC1A44DF2A001B028A /* speedometr-param.png in Resources */,
 				BB2B76781A33A07000AF6CEF /* Main.storyboard in Resources */,
+				BBF9F0B41A44BE68001B028A /* pr.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
