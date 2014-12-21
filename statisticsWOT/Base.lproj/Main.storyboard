@@ -799,15 +799,16 @@
                     <connections>
                         <outlet property="inputNickName" destination="zTq-jX-3kL" id="0oX-4w-MJu"/>
                         <outlet property="labelBatlle_avg_xp" destination="3iY-YB-cz6" id="PdO-ZT-XZh"/>
+                        <outlet property="labelDamageAvg" destination="NlE-ha-No8" id="SXD-do-rKq"/>
+                        <outlet property="labelWins" destination="7b5-Gq-JRi" id="FgH-6P-Ztw"/>
                         <outlet property="labelWinsRatio" destination="Aj5-wT-Z2N" id="1hf-tN-5qq"/>
-                        <outlet property="labelXpAvg" destination="3iY-YB-cz6" id="lf4-nX-Ktl"/>
                         <outlet property="lebalGlobal_rating" destination="g8p-AA-dv1" id="0Bb-5U-0Eh"/>
                         <outlet property="outNickName" destination="tr7-fc-EaU" id="FiC-fF-eF1"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20.5" y="683.5"/>
+            <point key="canvasLocation" x="-109.5" y="730.5"/>
         </scene>
     </scenes>
     <resources>

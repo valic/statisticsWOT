@@ -16,6 +16,8 @@ class ViewController: NSViewController {
     @IBOutlet weak var lebalGlobal_rating: NSTextField!
     @IBOutlet weak var labelWinsRatio: NSTextField!
     @IBOutlet weak var labelXpAvg: NSTextField!
+    @IBOutlet weak var labelDamageAvg: NSTextField!
+    @IBOutlet weak var labelWins: NSTextField!
     @IBAction func getStart(sender: AnyObject) {
     
         let nickNameIn = inputNickName.stringValue
@@ -83,7 +85,7 @@ class ViewController: NSViewController {
             }
             return (account_id, nickname, status, count, codeError, message, value, field)
         }
-        func parseAccountInfo(account_id: NSNumber) -> (battle_avg_xp: Int?, battles: Int?, global_rating: Int?, status: String?, codeError: Int?, message: String?, value:String?, Field:String? )! {
+        func parseAccountInfo(account_id: NSNumber) -> (battle_avg_xp: Int?, battles: Int?, global_rating: Int?, wins: Int?, status: String?, codeError: Int?, message: String?, value:String?, Field:String? )! {
             
             var battle_avg_xp:Int?
             var battles: Int?
@@ -94,8 +96,9 @@ class ViewController: NSViewController {
             var field:String?
             var parseError:NSDictionary!
             var global_rating:Int?
+            var wins:Int?
             
-            let parseAccountID = (parseJSON(getJSON("http://api.worldoftanks.ru/wot/account/info/?application_id=c2f02a1fea169312db457a323fd41441&fields=statistics.all.battles,statistics.all.battle_avg_xp,global_rating&access_token=736bce94326dc5d2c7030928993d8c651c5eeb31&account_id=" + account_id.stringValue)))
+            let parseAccountID = (parseJSON(getJSON("http://api.worldoftanks.ru/wot/account/info/?application_id=c2f02a1fea169312db457a323fd41441&fields=statistics.all.battles,statistics.all.battle_avg_xp,global_rating,statistics.all.wins&access_token=736bce94326dc5d2c7030928993d8c651c5eeb31&account_id=" + account_id.stringValue)))
             
             
             if let parse = parseAccountID as? [String: AnyObject] {
@@ -114,7 +117,7 @@ class ViewController: NSViewController {
                         var all = statistics!["all"] as? NSDictionary
                         battle_avg_xp = all!["battle_avg_xp"] as? Int
                         battles = all!["battles"] as? Int
-                        
+                        wins = all!["wins"] as? Int
                         
                     }
                 }
@@ -128,9 +131,9 @@ class ViewController: NSViewController {
                     field = (parseError["field"] as String)
                 }
             }
-            return (battle_avg_xp,battles, global_rating, status!, codeError, message, value, field)
+            return (battle_avg_xp,battles, global_rating, wins, status!, codeError, message, value, field)
         }
-        func parseRatingsAccounts(account_id: NSNumber) -> (wins_ratio: Float?, xp_avg: Int?, status: String?, codeError: Int?, message: String?, value:String?, Field:String? )! {
+        func parseRatingsAccounts(account_id: NSNumber) -> (wins_ratio: Float?, xp_avg: Int?, damage_avg: Float?, status: String?, codeError: Int?, message: String?, value:String?, Field:String? )! {
             
             
             var status:String?
@@ -141,13 +144,14 @@ class ViewController: NSViewController {
             var parseError:NSDictionary!
             var wins_ratio:Float?
             var xp_avg:Int?
+            var damage_avg:Float?
             
-            let parseAccountID = (parseJSON(getJSON("https://api.worldoftanks.ru/wot/ratings/accounts/?application_id=c2f02a1fea169312db457a323fd41441&fields=wins_ratio.value,xp_avg.value&type=all&account_id=" + account_id.stringValue)))
+            let parseAccountID = (parseJSON(getJSON("https://api.worldoftanks.ru/wot/ratings/accounts/?application_id=c2f02a1fea169312db457a323fd41441&fields=wins_ratio.value,xp_avg.value,damage_avg.value&type=all&account_id=" + account_id.stringValue)))
             
             
             if let parse = parseAccountID as? [String: AnyObject] {
                 
-                 //println(parse)
+                // println(parse)
                 
                 status = parse["status"] as String! // ‘ok’ — запрос выполнен успешно; ‘error’ — ошибка при выполнении запроса.
                 
@@ -162,6 +166,9 @@ class ViewController: NSViewController {
                         
                         var avg = ID!["xp_avg"] as? NSDictionary
                         xp_avg = avg!["value"] as? Int //Средний опыт за бой
+                        
+                        var damage = ID!["damage_avg"] as? NSDictionary
+                        damage_avg = damage!["value"] as? Float //Средний нанесённый урон за бой
                        
                       //  var all = statistics!["all"] as? NSDictionary
                       //  battle_avg_xp = all!["battle_avg_xp"] as? Int
@@ -180,7 +187,7 @@ class ViewController: NSViewController {
                     field = (parseError["field"] as String)
                 }
             }
-            return (wins_ratio, xp_avg, status!, codeError, message, value, field)
+            return (wins_ratio, xp_avg, damage_avg, status!, codeError, message, value, field)
         }
         let accountID = parseAccountID(nickNameIn)
         
@@ -196,7 +203,10 @@ class ViewController: NSViewController {
                     labelBatlle_avg_xp.stringValue = String(accountInfo.battle_avg_xp!)
                     lebalGlobal_rating.stringValue = String(accountInfo.global_rating!) // Личный рейтин игрока
                     labelWinsRatio.stringValue = String(format: "%.2f", (ratingsAccounts.wins_ratio!)) + "%"
-                    labelXpAvg.stringValue = String(ratingsAccounts.xp_avg!)
+                    labelWins.stringValue = String(accountInfo.wins!)
+                  //  labelXpAvg.stringValue = String(ratingsAccounts.xp_avg!)
+                   // labelDamageAvg.stringValue = String(format: "%.2f", (ratingsAccounts.damage_avg!))
+                  //  println(ratingsAccounts.damage_avg!)
                     
                     println("Средний опыт за бой \(accountInfo.battle_avg_xp!)") // Средний опыт за бой
                     println("Проведено боёв \(accountInfo.battles!)")
